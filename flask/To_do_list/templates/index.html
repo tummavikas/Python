@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%block head %}
+<title>FIRST FlasK</title>
+<h1>Template</h1>
+{%endblock%}
+{%block body%}
+<div class="content">
+  <h1>TAsk manager</h1>
+  <table>
+    <tr>
+      <th>Status</th>
+      <th>Task</th>
+      <th>Added</th>
+      <th>deadline</th>
+      <th>Actions</th>
+    </tr>
+    {% for task in tasks %}
+      <tr>
+        <td><input type="checkbox" value ="Flase" placeholder="done"></td>
+        <td>{{ task.content }}</td>
+        <td></td>
+        <td>{{ task.date_created}}</td>
+        <td>
+          <a href="/delete/{{ task.id}}">Delete</a>
+          <br>
+          <a href="/Update/{{ task.id}}">Update</a>
+        </td>
+      </tr>
+    {%endfor%}
+</table>
+<div class="form">
+<form action="/" method="POST">
+  <br>
+  <p>Enter the task </p>
+  <input type="text" name="content" id="content" placeholder="enter Action"><br>
+  <br>
+  <p>Deadline</p>
+  <input type="date" placeholder="enter deadline" id="Date">
+  <br><br>
+  <input type="submit" value="Add Task" id ="submit" >
+</form>
+</div>
+</div>
+{%endblock%}
